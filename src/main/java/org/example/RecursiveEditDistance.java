@@ -4,17 +4,19 @@ import java.util.Objects;
 
 public final class RecursiveEditDistance implements EditDistance {
     @Override
-    public int distance(String a, String b) {
+    public int distance(String a, String b, OperationCounter counter) {
         Objects.requireNonNull(a);
         Objects.requireNonNull(b);
-        return solve(a, b, a.length(), b.length());
+        Objects.requireNonNull(counter);
+        return solve(a, b, a.length(), b.length(), counter);
     }
 
-    private int solve(String a, String b, int n, int m) {
+    private int solve(String a, String b, int n, int m, OperationCounter counter) {
+        counter.increment();
         if (n == 0) return m;
         if (m == 0) return n;
-        if (a.charAt(n - 1) == b.charAt(m - 1)) return solve(a, b, n - 1, m - 1);
-        return 1 + Math.min(solve(a, b, n - 1, m),
-                Math.min(solve(a, b, n, m - 1), solve(a, b, n - 1, m - 1)));
+        if (a.charAt(n - 1) == b.charAt(m - 1)) return solve(a, b, n - 1, m - 1, counter);
+        return 1 + Math.min(solve(a, b, n - 1, m, counter),
+                Math.min(solve(a, b, n, m - 1, counter), solve(a, b, n - 1, m - 1, counter)));
     }
 }

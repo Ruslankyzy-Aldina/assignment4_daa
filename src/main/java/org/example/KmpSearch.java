@@ -6,9 +6,14 @@ import java.util.Objects;
 
 public final class KmpSearch implements StringSearch {
     public int[] lps(String pattern) {
+        return lps(pattern, new OperationCounter());
+    }
+
+    private int[] lps(String pattern, OperationCounter counter) {
         Objects.requireNonNull(pattern);
         int[] lps = new int[pattern.length()];
         for (int i = 1, length = 0; i < pattern.length();) {
+            counter.increment();
             if (pattern.charAt(i) == pattern.charAt(length)) lps[i++] = ++length;
             else if (length > 0) length = lps[length - 1];
             else lps[i++] = 0;
@@ -17,14 +22,16 @@ public final class KmpSearch implements StringSearch {
     }
 
     @Override
-    public List<Integer> search(String text, String pattern) {
+    public List<Integer> search(String text, String pattern, OperationCounter counter) {
         Objects.requireNonNull(text);
         Objects.requireNonNull(pattern);
+        Objects.requireNonNull(counter);
         if (pattern.isEmpty()) throw new IllegalArgumentException("Pattern must not be empty");
         List<Integer> matches = new ArrayList<>();
         if (pattern.length() > text.length()) return matches;
-        int[] lps = lps(pattern);
+        int[] lps = lps(pattern, counter);
         for (int i = 0, j = 0; i < text.length();) {
+            counter.increment();
             if (text.charAt(i) == pattern.charAt(j)) {
                 i++;
                 j++;

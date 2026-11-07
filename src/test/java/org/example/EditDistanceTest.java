@@ -37,6 +37,19 @@ class EditDistanceTest {
         }
     }
 
+    @Test
+    void countersMeasureCallsAndCells() {
+        OperationCounter recursive = new OperationCounter();
+        OperationCounter table = new OperationCounter();
+        OperationCounter twoRows = new OperationCounter();
+        new RecursiveEditDistance().distance("ab", "cd", recursive);
+        new TableEditDistance().distance("ab", "cd", table);
+        new TwoRowEditDistance().distance("ab", "cd", twoRows);
+        assertEquals(19, recursive.value());
+        assertEquals(4, table.value());
+        assertEquals(4, twoRows.value());
+    }
+
     private static String randomString(Random random) {
         int length = random.nextInt(5);
         StringBuilder result = new StringBuilder(length);

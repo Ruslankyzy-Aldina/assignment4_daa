@@ -41,6 +41,16 @@ class StringSearchTest {
         }
     }
 
+    @Test
+    void countersMeasureCharacterComparisons() {
+        OperationCounter naiveCounter = new OperationCounter();
+        OperationCounter kmpCounter = new OperationCounter();
+        naive.search("AAAAA", "AA", naiveCounter);
+        kmp.search("AAAAA", "AA", kmpCounter);
+        assertEquals(8, naiveCounter.value());
+        assertEquals(6, kmpCounter.value());
+    }
+
     private static String randomString(Random random, int length) {
         StringBuilder result = new StringBuilder(length);
         for (int i = 0; i < length; i++) result.append("abc".charAt(random.nextInt(3)));
