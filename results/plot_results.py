@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 
 ROOT = Path(__file__).resolve().parent
-PLOTS = ROOT / "plots"
+PLOTS = ROOT.parent / "photos"
 PLOTS.mkdir(exist_ok=True)
 
 groups = defaultdict(list)

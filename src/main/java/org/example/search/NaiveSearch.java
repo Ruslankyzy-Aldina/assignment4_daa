@@ -1,8 +1,9 @@
-package org.example;
+package org.example.search;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.example.benchmark.OperationCounter;
 
 public final class NaiveSearch implements StringSearch {
     @Override

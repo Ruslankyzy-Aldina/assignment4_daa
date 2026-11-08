@@ -1,6 +1,7 @@
-package org.example;
+package org.example.editdistance;
 
 import java.util.Objects;
+import org.example.benchmark.OperationCounter;
 
 public final class TwoRowEditDistance implements EditDistance {
     @Override

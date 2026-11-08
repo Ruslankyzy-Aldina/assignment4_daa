@@ -1,4 +1,4 @@
-package org.example;
+package org.example.search;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
+import org.example.benchmark.OperationCounter;
 
 class StringSearchTest {
     private final NaiveSearch naive = new NaiveSearch();

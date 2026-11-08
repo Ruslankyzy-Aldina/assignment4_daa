@@ -1,4 +1,6 @@
-package org.example;
+package org.example.editdistance;
+
+import org.example.benchmark.OperationCounter;
 
 @FunctionalInterface
 public interface EditDistance {

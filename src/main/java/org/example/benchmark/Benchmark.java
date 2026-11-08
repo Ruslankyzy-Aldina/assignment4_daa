@@ -1,4 +1,4 @@
-package org.example;
+package org.example.benchmark;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +8,13 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import org.example.editdistance.EditDistance;
+import org.example.editdistance.RecursiveEditDistance;
+import org.example.editdistance.TableEditDistance;
+import org.example.editdistance.TwoRowEditDistance;
+import org.example.search.KmpSearch;
+import org.example.search.NaiveSearch;
+import org.example.search.StringSearch;
 
 public final class Benchmark {
     private static final long SEED = 20261107L;

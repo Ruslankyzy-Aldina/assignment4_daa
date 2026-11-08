@@ -8,6 +8,18 @@ Java 25 and Maven project scaffold for the assignment.
 mvn test
 ```
 
+## Source layout
+
+```text
+src/main/java/org/example
+├── Main.java
+├── editdistance
+├── search
+└── benchmark
+```
+
+`Main` is the command-line entry point. Run `help` to see available commands.
+
 ## Experiment design card
 
 | Field | Edit Distance | String Search |
@@ -25,29 +37,29 @@ The fixed generator seed is `20261107`. The counter values are reproducible. Tim
 
 ```sh
 mvn -q -DskipTests package
-java -cp target/classes org.example.Benchmark
-java -cp target/classes org.example.ResultSummary
+java -cp target/classes org.example.Main benchmark
+java -cp target/classes org.example.Main summary
 python results/plot_results.py
 ```
 
-The benchmark writes one row per measured run to `results/results.csv`. The plot script requires `matplotlib` and writes PNG files to `results/plots/`.
+The benchmark writes one row per measured run to `results/results.csv`. The plot script requires `matplotlib` and writes PNG files to `photos/`.
 `ResultSummary` prints one median-time row for each algorithm, input type, and size.
 
 ## Results
 
-![Edit Distance work](results/plots/edit_work.png)
+![Edit Distance work](photos/edit_work.png)
 
 On disjoint strings of length 8, recursion evaluated 398,593 subproblems, while both DP versions updated exactly n² interior cells at each size.
 
-![DP median time](results/plots/edit_time.png)
+![DP median time](photos/edit_time.png)
 
 At n=512 on disjoint strings, the table took a median 2.0614 ms and two rows took 1.3496 ms; smaller timings fluctuated.
 
-![Search comparisons](results/plots/search_comparisons.png)
+![Search comparisons](photos/search_comparisons.png)
 
 On the repeated-prefix input at n=160,000, Naive made 5,119,008 comparisons and KMP made 320,030.
 
-![Search comparison ratio](results/plots/search_ratio.png)
+![Search comparison ratio](photos/search_ratio.png)
 
 The repeated-prefix case required about 16 times as many Naive comparisons as KMP comparisons, matching the prediction that KMP avoids rechecking long prefixes.
 

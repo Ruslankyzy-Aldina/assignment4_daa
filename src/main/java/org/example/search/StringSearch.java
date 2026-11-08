@@ -1,4 +1,6 @@
-package org.example;
+package org.example.search;
+
+import org.example.benchmark.OperationCounter;
 
 import java.util.List;
 

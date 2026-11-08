@@ -1,10 +1,11 @@
-package org.example;
+package org.example.editdistance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
+import org.example.benchmark.OperationCounter;
 
 class EditDistanceTest {
     private final List<EditDistance> implementations = List.of(

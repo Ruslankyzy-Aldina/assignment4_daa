@@ -1,4 +1,4 @@
-package org.example;
+package org.example.benchmark;
 
 public final class OperationCounter {
     private long value;
