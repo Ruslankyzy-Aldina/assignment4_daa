@@ -26,10 +26,12 @@ The fixed generator seed is `20261107`. The counter values are reproducible. Tim
 ```sh
 mvn -q -DskipTests package
 java -cp target/classes org.example.Benchmark
+java -cp target/classes org.example.ResultSummary
 python results/plot_results.py
 ```
 
 The benchmark writes one row per measured run to `results/results.csv`. The plot script requires `matplotlib` and writes PNG files to `results/plots/`.
+`ResultSummary` prints one median-time row for each algorithm, input type, and size.
 
 ## Results
 
